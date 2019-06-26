@@ -7,7 +7,8 @@ fun main() {
     list.push(2)
     list.push(4)
 
-    val item = list.pop()
+    val pop = list.pop()
+    val shift = list.shift()
 
 }
 
@@ -57,5 +58,19 @@ class SinglyLinkedList<TTarget> {
         }
 
         return current
+    }
+
+    fun shift(): Node<TTarget>? {
+        if (head == null) return null
+
+        val currentHead = head
+        head = currentHead!!.next
+        length--
+
+        if (length == 0) {
+            tail = null
+        }
+
+        return currentHead
     }
 }
