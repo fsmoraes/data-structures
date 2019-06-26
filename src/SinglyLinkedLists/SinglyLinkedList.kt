@@ -33,4 +33,8 @@ class SinglyLinkedList<TTarget> {
 
         length++
     }
+
+    fun pop() {
+
+    }
 }
