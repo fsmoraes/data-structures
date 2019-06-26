@@ -7,11 +7,12 @@ fun main() {
     list.push(2)
     list.push(4)
 
+    val item = list.pop()
 
 }
 
 class Node<TTarget>(val value: TTarget) {
-    lateinit var next: Node<TTarget>
+    var next: Node<TTarget>? = null
 }
 
 class SinglyLinkedList<TTarget> {
@@ -34,7 +35,27 @@ class SinglyLinkedList<TTarget> {
         length++
     }
 
-    fun pop() {
+    fun pop(): Node<TTarget>? {
+        if (head == null) return null
 
+        var current = head
+        var newTail = current
+
+        while (current!!.next != null) {
+            newTail = current
+            current = current.next
+        }
+
+        length--
+
+        if (length == 0) {
+            head = null
+            tail = null
+        } else {
+            tail = newTail
+            tail!!.next = null
+        }
+
+        return current
     }
 }
