@@ -7,8 +7,12 @@ fun main() {
     list.push(2)
     list.push(4)
 
-    val pop = list.pop()
-    val shift = list.shift()
+//    val pop = list.pop()
+//    val shift = list.shift()
+
+    list.unshift(9)
+
+    val node = list.get(3)
 }
 
 class Node<TTarget>(val value: TTarget) {
@@ -90,5 +94,20 @@ class SinglyLinkedList<TTarget> {
         }
 
         length++
+    }
+
+    //Obtém um elemento da lista pelo indice
+    fun get(index: Int): Node<TTarget>? {
+        if (index < 0 || index >= length) return null
+
+        var counter = 0
+        var current = head
+
+        while (counter != index) {
+            current = current!!.next
+            counter++
+        }
+
+        return current
     }
 }
