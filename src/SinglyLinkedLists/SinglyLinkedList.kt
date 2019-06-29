@@ -9,7 +9,6 @@ fun main() {
 
     val pop = list.pop()
     val shift = list.shift()
-
 }
 
 class Node<TTarget>(val value: TTarget) {
@@ -22,6 +21,7 @@ class SinglyLinkedList<TTarget> {
     private var tail: Node<TTarget>? = null
     private var length: Int = 0
 
+    //Adiciona um elemento no fim da lista
     fun push(value: TTarget) {
         val newNode = Node(value)
 
@@ -36,6 +36,7 @@ class SinglyLinkedList<TTarget> {
         length++
     }
 
+    //Remove e retorna o último elemento da lista
     fun pop(): Node<TTarget>? {
         if (head == null) return null
 
@@ -60,6 +61,7 @@ class SinglyLinkedList<TTarget> {
         return current
     }
 
+    //Remove e retorna o primeiro elemento da lista
     fun shift(): Node<TTarget>? {
         if (head == null) return null
 
@@ -72,5 +74,21 @@ class SinglyLinkedList<TTarget> {
         }
 
         return currentHead
+    }
+
+    //Adiciona um elemento no ínicio da lista
+    fun unshift(value: TTarget) {
+
+        val newNode = Node(value)
+
+        if (head == null) {
+            head = newNode
+            tail = head
+        } else {
+            newNode.next = head
+            head = newNode
+        }
+
+        length++
     }
 }
