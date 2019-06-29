@@ -13,9 +13,11 @@ fun main() {
     list.unshift(9)
 
     val node = list.get(3)
+
+    list.set(0, 10)
 }
 
-class Node<TTarget>(val value: TTarget) {
+class Node<TTarget>(var value: TTarget) {
     var next: Node<TTarget>? = null
 }
 
@@ -109,5 +111,17 @@ class SinglyLinkedList<TTarget> {
         }
 
         return current
+    }
+
+    //Atribui um novo valor ao elemento do indice informado
+    fun set(index: Int, value: TTarget): Boolean {
+        var node = get(index)
+
+        if (node != null) {
+            node.value = value
+            return true
+        }
+
+        return false
     }
 }
