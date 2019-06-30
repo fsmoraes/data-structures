@@ -96,7 +96,7 @@ class SinglyLinkedList<TTarget> {
         return current
     }
 
-    //Atribui um novo valor ao elemento do indice informado
+    //Atribui um novo valor ao elemento ao indice informado
     fun set(index: Int, value: TTarget): Boolean {
         var node = get(index)
 
@@ -108,7 +108,7 @@ class SinglyLinkedList<TTarget> {
         return false
     }
 
-    //insere um novo elemento na lista conforme o indice informado
+    //Insere um novo elemento na lista conforme o indice informado
     fun insert(index: Int, value: TTarget): Boolean {
         if (index < 0 || index > length) {
             return false
@@ -130,6 +130,22 @@ class SinglyLinkedList<TTarget> {
 
         return true
     }
+
+    //Remove um elemento da lista conforme o indice informado
+    fun remove(index: Int): Node<TTarget>? {
+
+        if (index <= 0 || index >= length) return null
+        else if (index == 0) return shift()
+        else if (index == length - 1) return pop()
+
+        val prev = get(index - 1)
+        val removed = prev!!.next!!
+
+        prev.next = removed.next
+        length--
+
+        return removed
+    }
 }
 
 fun main() {
@@ -140,7 +156,7 @@ fun main() {
     list.push(4)
     list.push(10)
 
-    val r = list.insert(3, 11)
+    val r = list.remove(2)
 
     println(r)
 }
