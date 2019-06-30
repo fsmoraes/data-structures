@@ -1,22 +1,5 @@
 package SinglyLinkedLists
 
-fun main() {
-    val list = SinglyLinkedList<Int>()
-
-    list.push(1)
-    list.push(2)
-    list.push(4)
-
-//    val pop = list.pop()
-//    val shift = list.shift()
-
-    list.unshift(9)
-
-    val node = list.get(3)
-
-    list.set(0, 10)
-}
-
 class Node<TTarget>(var value: TTarget) {
     var next: Node<TTarget>? = null
 }
@@ -124,4 +107,40 @@ class SinglyLinkedList<TTarget> {
 
         return false
     }
+
+    //insere um novo elemento na lista conforme o indice informado
+    fun insert(index: Int, value: TTarget): Boolean {
+        if (index < 0 || index > length) {
+            return false
+        } else if (index == length) {
+            push(value)
+            return true
+        } else if (index == 0) {
+            unshift(value)
+            return true
+        }
+
+        val newNode = Node(value)
+        val prev = get(index - 1)
+        val temp = prev!!.next
+
+        prev.next = newNode
+        newNode.next = temp
+        length++
+
+        return true
+    }
+}
+
+fun main() {
+    val list = SinglyLinkedList<Int>()
+
+    list.push(1)
+    list.push(2)
+    list.push(4)
+    list.push(10)
+
+    val r = list.insert(3, 11)
+
+    println(r)
 }
