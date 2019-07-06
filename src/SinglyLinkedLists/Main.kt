@@ -1,5 +1,0 @@
-package SinglyLinkedLists
-
-fun main() {
-
-}

@@ -1,5 +1,7 @@
 package SinglyLinkedLists
 
+import java.util.*
+
 class Node<TTarget>(var value: TTarget) {
     var next: Node<TTarget>? = null
 }
@@ -146,6 +148,32 @@ class SinglyLinkedList<TTarget> {
 
         return removed
     }
+
+    //Inverte os elementos da lista
+    fun reverse() {
+        var node = head
+        head = tail
+        tail = node
+
+        var next: Node<TTarget>? = null
+        var prev: Node<TTarget>? = null
+
+        for (i in 0 until length) {
+            next = node!!.next
+            node.next = prev
+            prev = node
+            node = next
+        }
+    }
+
+    fun print() {
+        var current = head
+
+        while (current != null) {
+            println(current.value)
+            current = current.next
+        }
+    }
 }
 
 fun main() {
@@ -156,7 +184,6 @@ fun main() {
     list.push(4)
     list.push(10)
 
-    val r = list.remove(2)
-
-    println(r)
+    list.reverse()
+    list.print()
 }
