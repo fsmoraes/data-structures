@@ -1,7 +1,5 @@
 package SinglyLinkedLists
 
-import java.util.*
-
 class Node<TTarget>(var value: TTarget) {
     var next: Node<TTarget>? = null
 }
