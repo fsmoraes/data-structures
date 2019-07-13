@@ -116,6 +116,31 @@ class DoublyLinkedList<TTarget> {
 
         return false
     }
+
+    fun insert(index: Int, value: TTarget): Boolean {
+
+        if (index < 0 || index > length) return false
+
+        when (index) {
+            0 -> unshift(value)
+            length -> push(value)
+            else -> {
+                val newNode = Node(value)
+                val beforeNode = get(index - 1)
+                val afterNode = beforeNode!!.next!!
+
+                beforeNode.next = newNode
+                newNode.prev = beforeNode
+
+                newNode.next = afterNode
+                afterNode.prev = newNode
+
+                length++
+            }
+        }
+
+        return true
+    }
 }
 
 fun main() {
