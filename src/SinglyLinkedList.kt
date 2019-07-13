@@ -1,8 +1,6 @@
-package SinglyLinkedLists
+package SLL
 
-class Node<TTarget>(var value: TTarget) {
-    var next: Node<TTarget>? = null
-}
+class Node<TTarget>(var value: TTarget, var next: Node<TTarget>? = null)
 
 class SinglyLinkedList<TTarget> {
 
@@ -153,7 +151,7 @@ class SinglyLinkedList<TTarget> {
         head = tail
         tail = node
 
-        var next: Node<TTarget>? = null
+        var next: Node<TTarget>?
         var prev: Node<TTarget>? = null
 
         for (i in 0 until length) {
