@@ -41,4 +41,56 @@ class DoublyLinkedList<TTarget> {
 
         return temp
     }
+
+    fun shift(): Node<TTarget>? {
+
+        if (head == null) return null
+
+        val oldHead = head
+
+        if (length == 1) {
+            head = null
+            tail = null
+        } else {
+            head = oldHead!!.next
+            head!!.prev = null
+            oldHead.next = null
+        }
+
+        length--
+
+        return oldHead
+    }
+
+    fun unshift(value: TTarget) {
+        val newNode = Node(value)
+
+        if (head == null) {
+            head = newNode
+            tail = newNode
+        } else {
+            head!!.prev = newNode
+            newNode.next = head
+            head = newNode
+        }
+
+        length++
+    }
+}
+
+fun main() {
+    val dll = DoublyLinkedList<Int>()
+
+    dll.push(1)
+    dll.push(2)
+    dll.push(3)
+
+    val first = dll.shift()
+    val last = dll.pop()
+
+    println(first!!.value)
+    println(last!!.value)
+
+    dll.unshift(5)
+    println(dll.shift()!!.value)
 }
