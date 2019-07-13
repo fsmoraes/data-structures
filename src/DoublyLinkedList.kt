@@ -105,6 +105,17 @@ class DoublyLinkedList<TTarget> {
 
         return current
     }
+
+    fun set(index: Int, value: TTarget): Boolean {
+        val node = get(index)
+
+        if (node != null) {
+            node.value = value
+            return true
+        }
+
+        return false
+    }
 }
 
 fun main() {
@@ -118,4 +129,7 @@ fun main() {
     println(dll.get(0)?.value)
     println(dll.get(2)?.value)
     println(dll.get(3))
+
+    dll.set(2, 5)
+    println(dll.get(2)?.value)
 }
