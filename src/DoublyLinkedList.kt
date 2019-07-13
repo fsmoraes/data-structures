@@ -141,6 +141,30 @@ class DoublyLinkedList<TTarget> {
 
         return true
     }
+
+    fun remove(index: Int): Node<TTarget>? {
+        if (index < 0 || index >= length) return null
+
+        when (index) {
+            0 -> return shift()
+            length - 1 -> return pop()
+            else -> {
+                val removedNode = get(index)
+                val beforeNode = removedNode!!.prev
+                val afterNode = removedNode.next
+
+                beforeNode!!.next = afterNode
+                afterNode!!.prev = beforeNode
+
+                removedNode.prev = null
+                removedNode.next = null
+
+                length--
+
+                return removedNode
+            }
+        }
+    }
 }
 
 fun main() {
