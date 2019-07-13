@@ -76,6 +76,35 @@ class DoublyLinkedList<TTarget> {
 
         length++
     }
+
+    fun get(index: Int): Node<TTarget>? {
+
+        if (length == 0 || index < 0 || index >= length) return null
+
+        var current: Node<TTarget>?
+
+        if (index < length / 2) {
+            //Começa pelo inicio da lista
+            var count = 0
+            current = head!!
+
+            while (count != index) {
+                current = current!!.next
+                count++
+            }
+        } else {
+            //Começa pelo fim da lista
+            var count = length - 1
+            current = tail!!
+
+            while (count != index) {
+                current = current!!.prev
+                count--
+            }
+        }
+
+        return current
+    }
 }
 
 fun main() {
@@ -85,12 +114,8 @@ fun main() {
     dll.push(2)
     dll.push(3)
 
-    val first = dll.shift()
-    val last = dll.pop()
-
-    println(first!!.value)
-    println(last!!.value)
-
-    dll.unshift(5)
-    println(dll.shift()!!.value)
+    println(dll.get(-1))
+    println(dll.get(0)?.value)
+    println(dll.get(2)?.value)
+    println(dll.get(3))
 }
