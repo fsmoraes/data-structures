@@ -13,7 +13,13 @@
     - Technically searching is O(n/2), but that's still O(n)
 * Access - O(n)
 
-## Stacks
+## Stacks (LIFO)
+* Insertion - O(1)
+* Removal - O(1)
+* Searching - O(n)
+* Access - O(n)
+
+## Queues (FIFO)
 * Insertion - O(1)
 * Removal - O(1)
 * Searching - O(n)
