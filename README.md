@@ -1,3 +1,6 @@
+
+![Big](BigOChart.jpeg)
+
 ## Singly Linked Lists
 * Insertion - O(1)
 * Removal 
@@ -24,3 +27,7 @@
 * Removal - O(1)
 * Searching - O(n)
 * Access - O(n)
+
+## Binary Search Trees (BST)
+* Insertion - O(log n)
+* Searching - O(log n)

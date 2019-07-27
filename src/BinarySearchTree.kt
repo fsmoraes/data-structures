@@ -35,6 +35,24 @@ class BinarySearchTree {
             }
         }
     }
+
+    fun find(value: Int): Node? {
+
+        if (root == null) return null
+
+        var found = false
+        var currentNode = root
+
+        while (currentNode != null && !found) {
+            when {
+                value < currentNode!!.value -> currentNode = currentNode.left
+                value > currentNode!!.value -> currentNode = currentNode.right
+                else -> found = true
+            }
+        }
+
+        return currentNode
+    }
 }
 
 fun main() {
@@ -47,4 +65,8 @@ fun main() {
     bts.insert(11)
     bts.insert(16)
     bts.insert(2)
+
+    println(bts.find(5)?.value)
+    println(bts.find(2)?.value)
+    println(bts.find(90)?.value)
 }
